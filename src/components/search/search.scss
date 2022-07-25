@@ -1,0 +1,52 @@
+@use '../../scss/' as *;
+.search {
+    position: relative;
+    width: 40%;
+    @include tablet {
+        width: 50%;
+    }
+    @include mobile {
+        width: 100%;
+    }
+
+    input {
+        background-color: transparent;
+        border: 2px solid $white;
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px 5px;
+        border-radius: 15px;
+        color: $white;
+        &:focus ~ label,
+        &:valid ~ label {
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: $white;
+        }
+    }
+    label {
+        position: absolute;
+        top: 0;
+        left: 15px;
+        padding: 0 2px;
+        font-size: 1rem;
+        transform: translateY(30%);
+        transition: all 0.5s ease-in-out;
+        color: rgb(142, 142, 142);
+        font-weight: 700;
+        pointer-events: none;
+        background-color: $body-bg;
+        @include mobile {
+            transform: translateY(60%);
+        }
+    }
+    button {
+        position: absolute;
+        height: 100%;
+        left: 100%;
+        transform: translateX(-100%);
+        i {
+            font-size: 1rem;
+        }
+    }
+}

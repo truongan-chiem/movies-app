@@ -1,0 +1,109 @@
+@use '../../scss/' as *;
+
+.banner {
+    padding: 9rem 0;
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include overlay();
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+    }
+}
+
+.detail-content {
+    @include flex(flex-start, flex-start);
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -200px;
+    position: relative;
+    padding: 0 2rem;
+
+    &__poster {
+        flex: 1;
+        @include mobile {
+            display: none;
+        }
+
+        &__image {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: $border-radius;
+            padding-top: 165%;
+        }
+    }
+    &__info {
+        width: 70%;
+        padding-left: 2rem;
+        position: relative;
+
+        @include mobile {
+            width: 100%;
+            padding-left: 0rem;
+        }
+
+        & > * {
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            line-height: 3.5rem;
+        }
+        .genres {
+            & > * ~ * {
+                margin-left: 0.5rem;
+            }
+            &__item {
+                padding: 0.5rem 0.7rem;
+                border: 2px solid $white;
+                background-color: $body-bg;
+                border-radius: $border-radius;
+            }
+        }
+        .overview {
+            text-align: justify;
+        }
+    }
+}
+.casts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    &__item {
+        &__image {
+            background-size: cover;
+            padding-top: 160px;
+            margin-bottom: 1rem;
+        }
+        &__name {
+            font-size: 1rem;
+        }
+    }
+}
+.video {
+    margin-bottom: 3rem;
+    &__title {
+        font-size: 1.5rem;
+    }
+}
